@@ -85,7 +85,7 @@ document.querySelector(".btn-hold").addEventListener("click" ,  function(){
     //  eeljiin onoog in 0 bolgon  
 
     // ug toglogchiin hojson esehiig 
-    if(scores[activePlayer] >=10 ){
+    if(scores[activePlayer] >=100 ){
         // togloom duussan tolovt oruulan 
         isnewOver = false ; 
 
