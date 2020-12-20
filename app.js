@@ -1,4 +1,6 @@
 // togm=loon=miin buh gazart ashiglah global  end 
+// togloom duussan eseh hadgalah eseh 
+var isnewOver ; 
 var activePlayer = 0 ; 
 var scores=0 ; 
 var roundScore=0 ; 
@@ -9,6 +11,8 @@ var diceDom = document.querySelector(".dice") ;
 innitgame () ;
 
 function innitgame () { 
+    // togloom duussan uu 
+    isnewOver = true ; 
     // toglogchiin eejiig hadaglah huvdsagch negdugeer toglogchiig 0 harin toglolgl ch 2iig 1 gene 
 activePlayer = 0 ; 
 
@@ -42,6 +46,8 @@ diceDom.style.display = "none" ;
 
 // shoog shiddeg bolson bna 
 document.querySelector(".btn-roll").addEventListener("click" , function () {
+if(isnewOver !== false){
+
     // 1-6 hurtel sanaandgui neg too gargaj avna 
     var diceNumber = Math.floor(Math.random()*6) +1 ; 
 
@@ -61,12 +67,16 @@ document.querySelector(".btn-roll").addEventListener("click" , function () {
 
         //  toglogchiin tsugluulsan onoog 0 bolgoh 
         switchToNExtplayer () ; 
-    }
+        }
+    }else{
+        alert("tomlooom sussan bna new game tochiig dar")
+    } 
 }) ; 
 
 // hold tovchnii 
 document.querySelector(".btn-hold").addEventListener("click" ,  function(){
-    // ug toglohchiin eeljind eeljnii onoog global onoon deer nemj ogno 
+    if(isnewOver){
+         // ug toglohchiin eeljind eeljnii onoog global onoon deer nemj ogno 
     // scores = [80,20] ;
     scores[activePlayer] = scores[activePlayer] + roundScore ; 
 
@@ -76,6 +86,9 @@ document.querySelector(".btn-hold").addEventListener("click" ,  function(){
 
     // ug toglogchiin hojson esehiig 
     if(scores[activePlayer] >=10 ){
+        // togloom duussan tolovt oruulan 
+        isnewOver = false ; 
+
         // yallagch  gesen text 
         document.getElementById("name-" + activePlayer).textContent = "WINNER !!! " ;
         document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner") ;
@@ -84,6 +97,9 @@ document.querySelector(".btn-hold").addEventListener("click" ,  function(){
         // toglogchiin eeljiig solih 
         switchToNExtplayer () ; 
     }   
+    }else{
+        alert("tomlooom sussan bna new game tochiig dar")
+    }
 }) ; 
 
 // eme fuction in togloh eeljiig daraachiiin toglogch ruu shiljulldeg 
