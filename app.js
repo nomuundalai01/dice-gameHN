@@ -38,11 +38,40 @@ document.querySelector(".btn-roll").addEventListener("click" , function () {
         // 1 buusan too tul toglogchiin eeljiig solj bna 
 
         //  toglogchiin tsugluulsan onoog 0 bolgoh 
+        switchToNExtplayer () ; 
+    }
+}) ; 
+
+// hold tovchnii 
+document.querySelector(".btn-hold").addEventListener("click" ,  function(){
+    // ug toglohchiin eeljind eeljnii onoog global onoon deer nemj ogno 
+    // scores = [80,20] ;
+    scores[activePlayer] = scores[activePlayer] + roundScore ; 
+
+    // delgets deer onoog ni oorchloh 
+    document.getElementById("score-" + activePlayer).textContent = scores[activePlayer] ;
+    //  eeljiin onoog in 0 bolgon  
+
+    // ug toglogchiin hojson esehiig 
+    if(scores[activePlayer] >=10 ){
+        // yallagch  gesen text 
+        document.getElementById("name-" + activePlayer).textContent = "WINNER !!! " ;
+        document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner") ;
+        document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active") ;
+    }else{
+        // toglogchiin eeljiig solih 
+        switchToNExtplayer () ; 
+    }   
+}) ; 
+
+// eme fuction in togloh eeljiig daraachiiin toglogch ruu shiljulldeg 
+function switchToNExtplayer() { 
+ // 1 buusan too tul toglogchiin eeljiig solj bna 
+        //  toglogchiin tsugluulsan onoog 0 bolgoh 
         roundScore = 0 ;
         document.getElementById("current-" + activePlayer).textContent = 0 ; 
 
         // toglogchiin eeljiig solih 
-        // herev idvehtei toglogch ni o baival 1 bolgoh
         // ugui bol 1 ni 0 bolgoh
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0 ; 
         // ulaan tseg haij oloh 
@@ -51,7 +80,9 @@ document.querySelector(".btn-roll").addEventListener("click" , function () {
 
         // shoo tur alag bolgoh 
         diceDom.style.display = "none" ; 
-    }
-}) ; 
+}
 
-
+//  shine togloom ihluuleh event 
+document.querySelector(".btn-new").addEventListener("click" , function() { 
+    alert("blah") ; 
+})
